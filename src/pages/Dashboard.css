@@ -1,0 +1,149 @@
+/* General Dashboard Container */
+.dashboard-container {
+    padding: 20px;
+    background-color: #f4f7fc;
+    color: #333;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .logout-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Year Selection */
+  .year-container {
+    margin-bottom: 30px;
+  }
+  
+  .year-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .year-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    flex: 1 1 calc(25% - 20px);
+    text-align: center;
+  }
+  
+  .year-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+  }
+  
+  .year-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .year-card.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Subject Select Dropdown */
+  .subject-select {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Group Selection */
+  .group-container {
+    margin-bottom: 30px;
+  }
+  
+  .group-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .group-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    flex: 1 1 calc(33% - 20px);
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .group-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .group-card.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Student List */
+  /* Student List */
+.students-container {
+    margin-top: 30px;
+  }
+  
+  .student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .student-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  

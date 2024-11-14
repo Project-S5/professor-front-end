@@ -1,0 +1,48 @@
+/* Navbar.css */
+.header {
+    background-color: #f8f9fa;  /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Subtle shadow effect */
+    padding: 1rem;  /* Padding for spacing */
+    display: flex;  /* Enable flexbox layout */
+    justify-content: flex-end;  /* Align items to the right */
+    align-items: center;  /* Vertically center items */
+    width: 100%;  /* Make the header full width */
+  }
+  
+  .navbar-content {
+    display: flex;  /* Flex container for items */
+    justify-content: flex-end;  /* Ensure content is aligned to the right */
+    width: 100%;  /* Full width container */
+  }
+  
+  .login-button {
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    color: #007bff;  /* Text color */
+    text-decoration: none;
+    background-color: #f8f9fa;  /* Same background color as header */
+    border: 2px solid #007bff;  /* Blue border */
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
+  }
+  
+  .login-button:hover {
+    background-color: #007bff;  /* Blue background on hover */
+    color: #fff;  /* White text on hover */
+  }
+/* Navbar.css */
+.logout-button {
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #dc3545;  /* Red background for logout */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #c82333;  /* Darker red on hover */
+  }
+    
