@@ -9,7 +9,7 @@ const Navbar = ({ onLogout }) => {
   return (
     <header className="header">
       <div className="navbar-content">
-        {location.pathname === '/dashboard' ? (
+        {(location.pathname === '/dashboard' || location.pathname === '/admin') ? (
           <button onClick={onLogout} className="logout-button">Logout</button>
         ) : location.pathname === '/login' ? (
           <Link to="/" className="login-button">Home</Link>

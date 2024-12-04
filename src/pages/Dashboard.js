@@ -10,8 +10,10 @@ const Dashboard = () => {
     'Year 3': '',
     'Year 4': '',
   });
-
   const [selectedSubject, setSelectedSubject] = useState('');
+  const [absentees, setAbsentees] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
   const groups = {
@@ -21,22 +23,28 @@ const Dashboard = () => {
     'Year 4': ['Group A', 'Group C'],
   };
 
-  // 15 Students in Each Group
+  // Students with numeric IDs for each group
   const students = {
     'Group A': [
-      'John Doe', 'Jane Smith', 'Alice Brown', 'Bob White', 'Emma Green',
-      'Lucas Blue', 'Mia Red', 'Noah Yellow', 'Olivia Purple', 'Liam Orange',
-      'Sophia Black', 'Ethan Pink', 'Isabella Grey', 'James Violet', 'Charlotte Indigo',
+      { id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Smith' }, { id: 3, name: 'Alice Brown' },
+      { id: 4, name: 'Bob White' }, { id: 5, name: 'Emma Green' }, { id: 6, name: 'Lucas Blue' },
+      { id: 7, name: 'Mia Red' }, { id: 8, name: 'Noah Yellow' }, { id: 9, name: 'Olivia Purple' },
+      { id: 10, name: 'Liam Orange' }, { id: 11, name: 'Sophia Black' }, { id: 12, name: 'Ethan Pink' },
+      { id: 13, name: 'Isabella Grey' }, { id: 14, name: 'James Violet' }, { id: 15, name: 'Charlotte Indigo' },
     ],
     'Group B': [
-      'Mason Brown', 'Ella White', 'Daniel Black', 'Amelia Blue', 'Jackson Green',
-      'Ava Red', 'Henry Yellow', 'Madison Purple', 'Sebastian Orange', 'Zoe Pink',
-      'Elijah Violet', 'Hannah Indigo', 'Leo Grey', 'Victoria Violet', 'Aiden Brown',
+      { id: 16, name: 'Mason Brown' }, { id: 17, name: 'Ella White' }, { id: 18, name: 'Daniel Black' },
+      { id: 19, name: 'Amelia Blue' }, { id: 20, name: 'Jackson Green' }, { id: 21, name: 'Ava Red' },
+      { id: 22, name: 'Henry Yellow' }, { id: 23, name: 'Madison Purple' }, { id: 24, name: 'Sebastian Orange' },
+      { id: 25, name: 'Zoe Pink' }, { id: 26, name: 'Elijah Violet' }, { id: 27, name: 'Hannah Indigo' },
+      { id: 28, name: 'Leo Grey' }, { id: 29, name: 'Victoria Violet' }, { id: 30, name: 'Aiden Brown' },
     ],
     'Group C': [
-      'Lucas Green', 'Emily Black', 'Jack Violet', 'Madeline Yellow', 'Lily Red',
-      'Benjamin Purple', 'Chloe Orange', 'Eli Brown', 'Sophia Pink', 'Owen Blue',
-      'Charlotte Grey', 'Mason Red', 'Liam Violet', 'Abigail Green', 'Oliver Pink',
+      { id: 31, name: 'Lucas Green' }, { id: 32, name: 'Emily Black' }, { id: 33, name: 'Jack Violet' },
+      { id: 34, name: 'Madeline Yellow' }, { id: 35, name: 'Lily Red' }, { id: 36, name: 'Benjamin Purple' },
+      { id: 37, name: 'Chloe Orange' }, { id: 38, name: 'Eli Brown' }, { id: 39, name: 'Sophia Pink' },
+      { id: 40, name: 'Owen Blue' }, { id: 41, name: 'Charlotte Grey' }, { id: 42, name: 'Mason Red' },
+      { id: 43, name: 'Liam Violet' }, { id: 44, name: 'Abigail Green' }, { id: 45, name: 'Oliver Pink' },
     ],
   };
 
@@ -58,13 +66,66 @@ const Dashboard = () => {
     setSelectedSubject(subject); // Update selected subject globally
   };
 
+  const handleCheckboxChange = (studentId) => {
+    setAbsentees((prevAbsentees) => {
+      let updatedAbsentees;
+      if (prevAbsentees.includes(studentId)) {
+        updatedAbsentees = prevAbsentees.filter((id) => id !== studentId); // Uncheck
+      } else {
+        updatedAbsentees = [...prevAbsentees, studentId]; // Check
+      }
+     
+      return updatedAbsentees;
+    });
+  };
+
+  const handleSubmit = async () => {
+    if (!selectedGroup || absentees.length === 0) {
+      setError('Please select a group and mark absentees.');
+      return;
+    }
+  
+    setLoading(true);
+    setError('');
+  
+    // Get the lesson ID and construct the API URL
+    const lessonId = 1; // Replace with the dynamic lesson ID if needed
+    const apiUrl = `http://localhost:8000/api/v1/attendance/lessons/${lessonId}/mark_absentees`;
+  
+    // Log the request URL and body for debugging
+    console.log('Sending request to:', apiUrl);
+    console.log('Absentees list:', absentees);
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          student_ids: absentees, // List of student IDs to be marked absent
+        }),
+      });
+  
+      if (response.ok) {
+        // Handle success
+        alert('Absentees marked successfully!');
+        setAbsentees([]); // Clear absentees after submitting
+      } else {
+        // Handle error
+        const data = await response.json();
+        setError(data.message || 'Failed to mark absentees.');
+      }
+    } catch (error) {
+      setError('An error occurred while marking absentees.');
+      console.error('Error during API request:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   return (
     <div className="dashboard-container">
-      {/* <div className="dashboard-header">
-        <h1>Dashboard</h1>
-        <button className="logout-button">Logout</button>
-      </div> */}
-
       <div className="year-container">
         <h2>Select Year and Subject</h2>
         <div className="year-cards">
@@ -112,13 +173,24 @@ const Dashboard = () => {
         <div className="students-container">
           <h2>Students in {selectedGroup}</h2>
           <div className="student-list">
-            {students[selectedGroup].map((student, index) => (
-              <div key={index} className="student-item">
-                <input type="checkbox" />
-                <span>{student}</span>
+            {students[selectedGroup].map((student) => (
+              <div key={student.id} className="student-item">
+                <input
+                  type="checkbox"
+                  checked={absentees.includes(student.id)}
+                  onChange={() => handleCheckboxChange(student.id)}
+                />
+                <span>{student.name}</span>
               </div>
             ))}
-            <button className="submit-button">Submit Attendance</button>
+            <button
+              className="submit-button"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              {loading ? 'Submitting...' : 'Submit Attendance'}
+            </button>
+            {error && <p className="error-message">{error}</p>}
           </div>
         </div>
       )}
