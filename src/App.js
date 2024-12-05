@@ -14,7 +14,7 @@ function App() {
   const handleLogout = () => setIsLoggedIn(false);
 
   // useEffect(() => {
-  //   fetch('http://localhost:8000/api/v1/attendance')
+  //   fetch('http://localhost:8000/api/attendance')
   //     .then(response => response.json())
   //     .then(data => {
   //       setAttendanceData(data);
