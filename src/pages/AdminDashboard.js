@@ -14,7 +14,7 @@ const AdminDashboard = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:8000/api/attendance/lessons");
+      const response = await fetch("http://localhost:8000/api/dashboard/lessons");
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
     setError(null);
     setSelectedLessonId(lessonId); // Set the selected lesson id
     try {
-      const response = await fetch(`http://localhost:8000/api/attendance/lessons/${lessonId}/students`);
+      const response = await fetch(`http://localhost:8000/api/dashboard/lessons/${lessonId}/students`);
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }

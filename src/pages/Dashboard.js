@@ -90,7 +90,7 @@ const Dashboard = () => {
   
     // Get the lesson ID and construct the API URL
     const lessonId = 1; // Replace with the dynamic lesson ID if needed
-    const apiUrl = `http://localhost:8000/api/attendance/lessons/${lessonId}/mark_absentees`;
+    const apiUrl = `http://localhost:8000/api/dashboard/lessons/${lessonId}/mark_absentees`;
   
     // Log the request URL and body for debugging
     console.log('Sending request to:', apiUrl);
