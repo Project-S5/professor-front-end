@@ -1,0 +1,102 @@
+.lesson-details {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .lesson-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .lesson-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+  }
+  
+  .error {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  #students-container {
+    margin-top: 20px;
+  }
+  
+  .students-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .student-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+  
+  .student-item input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .selected-students {
+    margin-top: 30px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .selected-students h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .selected-students ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .selected-students ul li {
+    font-size: 16px;
+    padding: 5px 0;
+  }
+  
+  .student-item p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  /* Submit Button Styles */
+  .submit-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-btn:focus {
+    outline: none;
+  }
+  

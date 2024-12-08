@@ -1,12 +1,29 @@
-// Navbar.js
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
+import './Navbar.css'; // Import CSS file for styling
 
-const Navbar = ({ onLogout }) => {
-  const location = useLocation();
+const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('is_admin');
+    navigate('/');
+  };
+
+  const handleRegister = () => {
+    navigate('/register-professor');
+  };
+
+  const handleDashboard = () => {
+    navigate('/professor-dashboard');
+  };
+
+  
 
   return (
+<<<<<<< Updated upstream
     <header className="header">
       <div className="navbar-content">
         {location.pathname === '/dashboard' ? (
@@ -16,8 +33,26 @@ const Navbar = ({ onLogout }) => {
         ) : (
           <Link to="/login" className="login-button">Login</Link>
         )}
+=======
+    <nav className="navbar">
+      <div className="navbar__left">
+        {/* <button className="navbar__button" onClick={handleDashboard}>
+          Home
+        </button>
+        <button className="navbar__button" onClick={handleSubjectsPerGroup}>
+          Subjects Per Group
+        </button> */}
+        <button className="navbar__button" onClick={handleDashboard}>
+          Dashboard
+        </button>
+>>>>>>> Stashed changes
       </div>
-    </header>
+      <div className="navbar__right">
+        <button className="navbar__button navbar__button--logout" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+    </nav>
   );
 };
 
