@@ -23,17 +23,7 @@ const Navbar = () => {
   
 
   return (
-<<<<<<< Updated upstream
-    <header className="header">
-      <div className="navbar-content">
-        {location.pathname === '/dashboard' ? (
-          <button onClick={onLogout} className="logout-button">Logout</button>
-        ) : location.pathname === '/login' ? (
-          <Link to="/" className="login-button">Home</Link>
-        ) : (
-          <Link to="/login" className="login-button">Login</Link>
-        )}
-=======
+
     <nav className="navbar">
       <div className="navbar__left">
         {/* <button className="navbar__button" onClick={handleDashboard}>
@@ -45,7 +35,6 @@ const Navbar = () => {
         <button className="navbar__button" onClick={handleDashboard}>
           Dashboard
         </button>
->>>>>>> Stashed changes
       </div>
       <div className="navbar__right">
         <button className="navbar__button navbar__button--logout" onClick={handleLogout}>
