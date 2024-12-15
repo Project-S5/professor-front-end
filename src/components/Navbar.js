@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Navbar.css'; // Import CSS file for styling
+import './Navbar.css'; 
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,26 +12,14 @@ const Navbar = () => {
     navigate('/');
   };
 
-  const handleRegister = () => {
-    navigate('/register-professor');
-  };
-
   const handleDashboard = () => {
     navigate('/professor-dashboard');
   };
-
-  
 
   return (
 
     <nav className="navbar">
       <div className="navbar__left">
-        {/* <button className="navbar__button" onClick={handleDashboard}>
-          Home
-        </button>
-        <button className="navbar__button" onClick={handleSubjectsPerGroup}>
-          Subjects Per Group
-        </button> */}
         <button className="navbar__button" onClick={handleDashboard}>
           Dashboard
         </button>
