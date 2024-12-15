@@ -18,8 +18,6 @@ function App() {
         <Route path="/lessons/:subjectId/" element={isAuthenticated ? <LessonsPage />: <Navigate to="/" />} />
         <Route path="/lesson/:lessonId/students" element={isAuthenticated ? <LessonDetails />: <Navigate to="/" />} />
 
-
-       
       </Routes>
     </Router>
   );
